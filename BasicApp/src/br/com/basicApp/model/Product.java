@@ -18,30 +18,30 @@ import java.util.Objects;
  *
  */
 
-public class User implements java.io.Serializable {
+public class Product implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
-    
-    @SwingColumn(description ="ID")
+    @SwingColumn(description = "Code")
     private Integer id;
-    @SwingColumn(description ="Name")
+    @SwingColumn(description = "Description")
     private String name;
-    @SwingColumn(description ="Login")
-    private String login;
-    private String password;
+    @SwingColumn(description = "Price")
+    private float price;
+    @SwingColumn(description = "Stock")
+    private int stock;
     
-    public User(){
+    public Product(){
 
     }
 
-    public User(Integer id) {
+    public Product(Integer id) {
         this.id = id;
     }
 
-    public User(Integer id, String name, String login, String password) {
+    public Product(Integer id, String name, float price, int stock) {
         this.id = id;
         this.name = name;
-        this.login = login;
-        this.password = password;
+        this.price = price;
+        this.stock = stock;
     }
 
     public Integer getId() {
@@ -60,26 +60,27 @@ public class User implements java.io.Serializable {
         this.name = name;
     }
 
-    public String getLogin() {
-        return login;
+    public float getPrice() {
+        return price;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setPrice(float price) {
+        this.price = price;
     }
 
-    public String getPassword() {
-        return password;
+    public int getStock() {
+        return stock;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 19 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.id);
+        hash = 31 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -91,8 +92,11 @@ public class User implements java.io.Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final User other = (User) obj;
+        final Product other = (Product) obj;
         if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         return true;
@@ -102,6 +106,8 @@ public class User implements java.io.Serializable {
     public String toString() {
         return getName();
     }
+
+    
     
     
 }

@@ -18,30 +18,33 @@ import java.util.Objects;
  *
  */
 
-public class User implements java.io.Serializable {
+public class Customer {
     private static final long serialVersionUID = 1L;
-    
-    @SwingColumn(description ="ID")
+    @SwingColumn(description = "Código")
     private Integer id;
-    @SwingColumn(description ="Name")
+    @SwingColumn(description = "Name")
     private String name;
-    @SwingColumn(description ="Login")
-    private String login;
-    private String password;
+    @SwingColumn(description = "Age")
+    private int age;
+    @SwingColumn(description = "Address")
+    private String address;
+    @SwingColumn(description = "Telephone")
+    private String telephone;
     
-    public User(){
+    public Customer(){
 
     }
 
-    public User(Integer id) {
+    public Customer(Integer id) {
         this.id = id;
     }
 
-    public User(Integer id, String name, String login, String password) {
+    public Customer(Integer id, String name, int age, String address, String telephone) {
         this.id = id;
         this.name = name;
-        this.login = login;
-        this.password = password;
+        this.age = age;
+        this.address = address;
+        this.telephone = telephone;
     }
 
     public Integer getId() {
@@ -60,26 +63,34 @@ public class User implements java.io.Serializable {
         this.name = name;
     }
 
-    public String getLogin() {
-        return login;
+    public int getAge() {
+        return age;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public String getPassword() {
-        return password;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 19 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -91,13 +102,13 @@ public class User implements java.io.Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final User other = (User) obj;
+        final Customer other = (Customer) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
-
+    
     @Override
     public String toString() {
         return getName();
