@@ -18,11 +18,11 @@ CREATE SCHEMA IF NOT EXISTS `app` DEFAULT CHARACTER SET utf8 ;
 USE `app` ;
 
 -- -----------------------------------------------------
--- Table `app`.`costumer`
+-- Table `APP`.`CUSTOMER`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `app`.`costumer` ;
+DROP TABLE IF EXISTS `APP`.`CUSTOMER` ;
 
-CREATE TABLE IF NOT EXISTS `app`.`costumer` (
+CREATE TABLE IF NOT EXISTS `APP`.`CUSTOMER` (
   `ID` INT(11) NOT NULL,
   `NAME_CST` VARCHAR(45) NULL DEFAULT NULL,
   `AGE_CST` INT(11) NULL DEFAULT NULL,
@@ -35,11 +35,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `app`.`product`
+-- Table `APP`.`PRODUCT`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `app`.`product` ;
+DROP TABLE IF EXISTS `APP`.`PRODUCT` ;
 
-CREATE TABLE IF NOT EXISTS `app`.`product` (
+CREATE TABLE IF NOT EXISTS `APP`.`PRODUCT` (
   `ID` INT(11) NOT NULL,
   `NAME_PRD` VARCHAR(45) NULL DEFAULT NULL,
   `PRICE_PRD` FLOAT NULL DEFAULT NULL,
@@ -51,11 +51,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `app`.`users`
+-- Table `APP`.`USERS`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `app`.`users` ;
+DROP TABLE IF EXISTS `APP`.`USERS` ;
 
-CREATE TABLE IF NOT EXISTS `app`.`users` (
+CREATE TABLE IF NOT EXISTS `APP`.`USERS` (
   `ID` INT(11) NOT NULL,
   `NAME` VARCHAR(45) NULL DEFAULT NULL,
   `LOGIN` VARCHAR(10) NULL DEFAULT NULL,
@@ -67,11 +67,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `app`.`sell`
+-- Table `APP`.`SELL`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `app`.`sell` ;
+DROP TABLE IF EXISTS `APP`.`SELL` ;
 
-CREATE TABLE IF NOT EXISTS `app`.`sell` (
+CREATE TABLE IF NOT EXISTS `APP`.`SELL` (
   `ID` INT(11) NOT NULL,
   `DATEOFSALE` DATE NULL DEFAULT NULL,
   `TOTAL` FLOAT NULL DEFAULT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `app`.`sell` (
   INDEX `fk_sell_users_idx` (`ID_USER` ASC),
   CONSTRAINT `fk_sell_users`
     FOREIGN KEY (`ID_USER`)
-    REFERENCES `app`.`users` (`ID`)
+    REFERENCES `APP`.`USERS` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -89,11 +89,11 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `app`.`sellitem`
+-- Table `APP`.`SELLITEM`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `app`.`sellitem` ;
+DROP TABLE IF EXISTS `APP`.`SELLITEM` ;
 
-CREATE TABLE IF NOT EXISTS `app`.`sellitem` (
+CREATE TABLE IF NOT EXISTS `APP`.`SELLITEM` (
   `ID` INT(11) NOT NULL,
   `QNT_SELLITEM` INT(11) NULL DEFAULT NULL,
   `ID_PRODUCT` INT(11) NOT NULL,
@@ -104,12 +104,12 @@ CREATE TABLE IF NOT EXISTS `app`.`sellitem` (
   INDEX `fk_sellitem_sell1_idx` (`ID_SELL` ASC),
   CONSTRAINT `fk_sellitem_product1`
     FOREIGN KEY (`ID_PRODUCT`)
-    REFERENCES `app`.`product` (`ID`)
+    REFERENCES `APP`.`PRODUCT` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_sellitem_sell1`
     FOREIGN KEY (`ID_SELL`)
-    REFERENCES `app`.`sell` (`ID`)
+    REFERENCES `APP`.`SELL` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
